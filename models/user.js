@@ -1,4 +1,4 @@
-const { SchemaTypes } = require("mongoose");
+// const { SchemaTypes } = require("mongoose");
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
@@ -24,10 +24,6 @@ const userSchema = Schema({
         type: String,
         default: null,
     },
-    owner: {
-      type: SchemaTypes.ObjectId,
-      ref: 'user',
-    },
 },
     { versionKey: false, timestamps: true });
 
@@ -42,7 +38,7 @@ const joiRegisterSchema = Joi.object({
 const joiLoginSchema = Joi.object({
   password: Joi.string().min(6).max(24).required(),
   email: Joi.string().min(4).max(64).required().email(),
-  subscription: Joi.string().min(6).max(24).required()
+  subscription: Joi.string().min(6).max(24)
 });
 
 
