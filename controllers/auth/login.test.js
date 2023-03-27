@@ -8,16 +8,16 @@ const app = express();
 app.post("/api/auth/login", login);
 
 jest.useRealTimers();
+const testTimeout = 10000;
 
-describe("Testing the api/auth/login route", () => {
     describe("Should handle post request", () => {
-        
-    beforeAll(() => app.listen(3000));
+    const server = app.listen(3000);   
+    beforeAll(() => server);
+    afterAll(() => server.close());
 
-    it("Should return 200 status for login", async () => {
-        const res = await request(app)
-        .post("/api/auth/login");
-        expect(res.code).toEqual(200);
-    });
+    test("Should return 200 status for login", async () => {
+        const res = await request(app).post("/api/auth/login");
+        expect(res.status).toEqual(200);
+    }, testTimeout);
   })
-})
+
