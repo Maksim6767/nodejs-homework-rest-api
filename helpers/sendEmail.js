@@ -16,7 +16,7 @@ const nodemailerConfig = {
 const transporter = nodemailer.createTransport(nodemailerConfig);
 
 const sendEmail = async (data) => {
-  const email = { ...data, from: "andrey1477@meta.ua" };
+  const email = { ...data, from: "maksymzhoglyk@meta.ua" };
 
   // eslint-disable-next-line no-useless-catch
   try {
