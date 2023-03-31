@@ -1,6 +1,6 @@
 const { Conflict } = require("http-errors");
 const gravatar = require("gravatar");
-const nanoid = require("nanoid");
+const { nanoid } = require("nanoid");
 const { User } = require("../../models");
 const { sendEmail } = require("../../helpers");
 
@@ -21,7 +21,7 @@ const register = async (req, res) => {
 
     const mail = {
         to: email,
-        subject: "Пдтверждение email",
+        subject: "Пoдтверждение email",
         html: `<a target = "_blank" href = "http://localhost:3000/api/users/verify/${verificationToken}">Подтвердить email</a>`
     }
     await sendEmail(mail);

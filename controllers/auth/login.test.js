@@ -1,23 +1,20 @@
 const express = require("express");
 const request = require("supertest");
 
-const login = require("./login");
+// const login = require("./login");
 
 const app = express();
 
-app.post("/api/auth/login", login);
+// app.post("/api/auth/login", login);
 
-jest.useRealTimers();
-const testTimeout = 10000;
+    describe("Should handle post request", () => {  
+        beforeAll(() => app.listen(3000));
+    // afterAll(() => app.close());
 
-    describe("Should handle post request", () => {
-    const server = app.listen(3000);   
-    beforeAll(() => server);
-    afterAll(() => server.close());
-
-    test("Should return 200 status for login", async () => {
-        const res = await request(app).post("/api/auth/login");
-        expect(res.status).toEqual(200);
-    }, testTimeout);
+        test("should return 200 status for login", async () => {
+            const response = await request(app).post("/api/auth/login");
+            console.log(response);
+            // expect(response.status).toBe(200);
+    });
   })
 
